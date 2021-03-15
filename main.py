@@ -53,7 +53,7 @@ def takeSecond(elem):
     return elem[1]
 
 
-def do_bullshit_ABC_analysis(dataList, break1, break2):
+def do_bullshit_ABC_analysis(dataList, break1, break2, dataColumn):
 
     dataList.sort(key=takeSecond, reverse=True)
 
@@ -66,9 +66,9 @@ def do_bullshit_ABC_analysis(dataList, break1, break2):
     for company in dataList:
         print(company[1])
         print(break1)
-        if company[1] >= break1:
+        if company[dataColumn] >= break1:
             xList.append(company[0])
-        elif break2 < company[1] < break1:
+        elif break2 < company[dataColumn] < break1:
             yList.append(company[0])
         else:
             zList.append(company[0])
@@ -80,8 +80,8 @@ if __name__ == "__main__":
     b_or_c = input("Enter b or c (program will quit on anything else): ")
 
     if b_or_c == "b":
-        do_bullshit_ABC_analysis(b_data, 1000, 200)
+        do_bullshit_ABC_analysis(b_data, 1000, 200, 1)
     elif b_or_c == "c":
-        do_bullshit_ABC_analysis(c_data, 500, 200)
+        do_bullshit_ABC_analysis(c_data, 500, 200, 2)
     else:
         print("exited")
